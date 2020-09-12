@@ -165,7 +165,7 @@ tuple <double,double,double,double> metropolis (double rho, double Vol)
         // cambio delta se passi accettati non in intervallo [35%,65%]
         if ((fw_steps > 650) or (fw_steps < 350))
         {
-          delta = delta*(1 + 0.2 * (fw_steps/1000-0.5));
+          delta = delta*(1 + 0.2 * ((double) fw_steps/1000 - 0.5));
         }
         // reset counter
         fw_steps = 0;
@@ -181,8 +181,8 @@ tuple <double,double,double,double> metropolis (double rho, double Vol)
     }
   }
 
-  double P = 0, P2 = 0, deltaP = 0;
-  double Cv = 0, Cv2 = 0, deltaCv = 0;
+  double P = 0, deltaP = 0;
+  double Cv = 0, deltaCv = 0;
 
   // lunghezza massima calcolo autocorrelazione
   int l = 5000;
